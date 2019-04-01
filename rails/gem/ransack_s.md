@@ -22,6 +22,9 @@
      @posts = @q.result.page(params[:page]).per(5)  
 ```
 
+  - 下記のようにすれば簡単にソート機能が付けれる（例）
+    -  `<%= sort_link(@q, :title, '件名', default_order: :asc) %>`
+
 - sはsortsのエイリアス
 - この辺の何がどういうクエリを表すかは公式とか下記サイトにのってる
   - 参考：http://nekorails.hatenablog.com/entry/2017/05/31/173925
