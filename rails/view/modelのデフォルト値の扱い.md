@@ -1,0 +1,5 @@
+## modelのデフォルト値の扱い
+- modelで例えばis_availableというboolean型のカラムがあって、そのデフォルトをtrueにしてる場合、
+- viewのform_forで`f.check_box :is_available`みたいに記述すると、新規作成時にはチェックボックスがチェック済みになる
+- つまり、新規作成時にはmodelの各カラムのデフォルト値とform_forのフォームのvalueのデフォルトが一致する。
+- なので新規作成の時はvalueをtrueにするための条件分岐とかいらなくて単純にモデルにデフォルト値を設定すればいいだけ。
