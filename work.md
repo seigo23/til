@@ -1,45 +1,53 @@
-
-```ruby
-# 上位システムから来るリクエストパラメータのイメージ（json）
- # 入館時 
-{
-  user_id: 1,
-  in: "2019-07-11 10:00:00",
-  out: nil,
-} 
-
-# 入館できないパターン 
-#  - 無制限で入れる会員だが決済エラーが起こっている
-#  - 退場記録がない
-#  - プラン関連（ここはプラン詳細が決まってないので詰めれない）
-
- # 退館時
-{
-  user_id: 1,
-  in: nil,
-  out: "2019-07-11 18:00:00",
-} 
-
-# 退館できないパターン 
-#  - 従量課金関連（ここはプラン詳細が決まってないので詰めれない）
-#  - 入館記録がない
-#  - プラン関連（ここはプラン詳細が決まってないので詰めれない）
-
-
-## つまり、「決済エラー」「入退のどちらかがNULL」「プラン/従量課金関連」の3つが止めるタイミング
-
-
-# kintone内部でやる処理（通常時）
- # - 入室した瞬間にuser_idと入室時間を受け取る
- # - そのuserがその日時に入れる権限があるか確認
- #    - そのuserが持っているプランを確認
- #    - プラン側にT/Fを返すメソッドを定義しといてそこで返してもらう
- # - 最終的なT/Fを上位システムに返す  
-
-# kintoneから返すレスポンスのイメージ（json）
-{
- is_valid: true
-}
-
-```
-
+{"groups"=>
+  [{"parent_id"=>nil,
+    "id"=>6086,
+    "name"=>"階層3",
+    "employee_count"=>0,
+    "employees"=>[],
+    "children"=>[]},
+   {"parent_id"=>6084,
+    "id"=>6087,
+    "name"=>"子階層1_1",
+    "employee_count"=>2,
+    "employees"=>
+     [{"id"=>1042743112,
+       "applicant_id"=>446088534,
+       "name"=>"従業s2",
+       "age"=>24,
+       "avatar_url"=>
+        "/uploads/employee/avatar/1042743112/thumb_upload_test1.png",
+       "in_charge"=>true,
+       "enrollment_status"=>"enrolled"},
+      {"id"=>153210835,
+       "applicant_id"=>nil,
+       "name"=>"Michael田中Smith",
+       "age"=>24,
+       "avatar_url"=>
+        "/uploads/employee/avatar/153210835/thumb_upload_test2.png",
+       "in_charge"=>false,
+       "enrollment_status"=>"leave"}],
+    "children"=>
+     [{"parent_id"=>6087,
+       "id"=>6088,
+       "name"=>"子階層1_1_1",
+       "employee_count"=>1,
+       "employees"=>
+        [{"id"=>541223653,
+          "applicant_id"=>nil,
+          "name"=>"入社済み従業員s",
+          "age"=>24,
+          "avatar_url"=>
+           "/uploads/employee/avatar/541223653/thumb_upload_test3.png",
+          "in_charge"=>false,
+          "enrollment_status"=>"enrolled"}],
+       "children"=>[]}]}],
+ "usable_group_ids"=>[6086, 6087],
+ "employees_not_belonging_groups"=>
+  [{"id"=>390421108,
+    "applicant_id"=>nil,
+    "name"=>"従業員s4",
+    "age"=>24,
+    "avatar_url"=>"",
+    "in_charge"=>false,
+    "enrollment_status"=>"enrolled"}],
+ "employees_not_belonging_groups_count"=>1}
