@@ -11,7 +11,7 @@ end
 ```
 - 下記詳細
 
-- `post :search ,on: member`みたいに 使えば1行で書ける
+- `post :search ,on: :collection`みたいに 使えば1行で書ける
 
 - `member`はresourcesでいうshowとかeditとかの`:id`で取るみたいに特定の一つのデータに対するもの
 
@@ -32,3 +32,4 @@ end
 ```
 
 参考：http://techblog.kyamanak.com/entry/2017/08/12/155914
+参考：https://techracho.bpsinc.jp/baba/2014_03_03/15619
